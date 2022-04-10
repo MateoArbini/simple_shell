@@ -1,6 +1,6 @@
 # Welcome to our simple_shell Project!
 
-<img src= "https://blog.holbertonschool.com/wp-content/uploads/2020/04/unnamed-2.png" width= 23% >
+<img src= "https://blog.holbertonschool.com/wp-content/uploads/2020/04/unnamed-2.png" width= 39% >
 
 Hello everyone! This is our “simple_shell” project. Our task was to create a replica of a console, which could read a command line, and execute them. To do this, we had to investigate various issues that occur behind the execution of a command, and that we do not see. We had to implement the use of functions such as "execve", "getline", among others, understand how they work, and from there, with the tools we had and that we had to learn, create our own console.
 
