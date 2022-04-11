@@ -83,7 +83,6 @@ char *_strdup(char *str)
 /**
 *casos_border - printea
 *@cadena: texto ingresado
-*@env: env
 *@bytes_leidos: int
 *Return: 1 o 0
 **/

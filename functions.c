@@ -71,7 +71,7 @@ char **cargar(char *cadena, char **array)
 	{
 		array[iter] = token;
 		iter++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, "\t ");
 	}
 	free(copycadena);
 	array[tokens] = NULL;
