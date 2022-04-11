@@ -33,12 +33,12 @@ int main(void)
 				{
 					ejecutar(array, cadena, env, cadena);
 					continue; }
-				perror("ERROR");
+				perror(cadena);
 				continue; }
 			path_comando = verifica(array_path, array[0]);
 			if (path_comando == NULL)
 			{
-				perror("ERROR");
+				perror(array[0]);
 				continue;	}
 			else
 				ejecutar(array, path_comando, env, cadena); }}
