@@ -1,0 +1,87 @@
+simple_shell
+
+NAME
+	simple_shell || ./hsh
+
+SYNOPSIS
+
+	"main.h"
+	$ [commands]..[flags] || $ [echo]..[commands]..[flag] | [./hsh]
+
+DESCRIPTION
+
+	Bash is an sh-compatible command language interpreter that executes
+	commands read from the standard input or from a file.
+
+LIBRARIES
+
+	#include <sys/stat.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <stdarg.h>
+	#include <string.h>
+	#include <signal.h>
+	#include <sys/wait.h>
+
+INTERACTIVE AND NON-INTERACTIVE MODE
+
+	This Shell must work in both modes:
+
+	Interactive mode:
+
+	($) ./hsh
+	($) /bin/ls
+	hsh main.c shell.c
+	($)
+	($) exit
+	($)
+
+	Non interactive mode:
+
+	($) echo "bin/ls" | ./hsh
+	hsh main.c shell.c test_ls_2
+	($)
+	($) cat test_ls_2
+	/bin/ls
+	/bin/ls
+	($)
+	($) cat test_ls_2 | ./hsh
+	hsh main.c shell.c test_ls_2
+	hsh main.c shell.c test_ls_2
+	($)
+
+COMPILATION
+
+	This shell will be compiled this way:
+
+	gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+STYLE
+
+	This code uses the Betty style code
+
+SIGNALS
+
+	CTRL D - close the interface session
+
+	CTRL C - kill a process that is running at the moment
+
+BUILT-IN
+
+	exit - causes the immediate kill of the process corresponding to the shell
+		that is reading the script.
+
+	env - prints the current environment.
+
+OUTPUT
+
+	The Output that this command interpreter throws is the same one that the CMD
+	throws when entering a command to the execution line in case it is correct,
+	otherwise, it will throw the corresponding error based on the command passed
+	by the user.
+
+AUTHORS
+
+	MATEO ARBINI
+	VALENTIN REPETTO
