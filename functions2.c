@@ -41,25 +41,34 @@ int verifica_caracteres(char *cadena)
 	}
 	return (-1);
 }
-
+/**
+ *_getenv - getenv function
+ *@env: env
+ **/
 void _getenv(char **env)
 {
 	int iter = 0;
 
 	while (env[iter])
 	{
-		printf("%s\n",env[iter]);
+		write(1, env[iter], 2);
 		iter++;
 	}
 }
+/**
+ *controlar_ctrlc - function
+ *@sig: signal
+ **/
 void controlar_ctrlc(int sig)
 {
 	if (sig == SIGINT)
 		write(1, "\n$ ", 3);
 }
-
-void modo_no_interactivo()
+/**
+ *modo_no_interactivo - function
+ **/
+void modo_no_interactivo(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
-		write(1,"$ ",2);
+		write(1, "$ ", 2);
 }

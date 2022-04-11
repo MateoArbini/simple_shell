@@ -1,14 +1,14 @@
 #include "main.h"
 /**
-* main - our simple shell
-*@argc: int
-*@argv:string
-*@env: enviroment
+*main - our simple shell
+*@argv: argv
+*@env: env
+*@argc: atributo
 *Return: 1
 **/
-int main(int __attribute__((unused)) argc, char  __attribute__((unused)) *argv[], char **env)
+int main(int argc, char *argv[], char **env)
 {
-	char *path = NULL,*path_comando = NULL,**array_paths = NULL;
+	char *path = NULL, *path_comando = NULL, **array_path = NULL;
 	ssize_t bytes_leidos = 0;
 	size_t numero_bytes = 0;
 	char **array = NULL, *cadena = NULL;
@@ -18,15 +18,15 @@ int main(int __attribute__((unused)) argc, char  __attribute__((unused)) *argv[]
 		signal(SIGINT, controlar_ctrlc);
 		modo_no_interactivo();
 		bytes_leidos = getline(&cadena, &numero_bytes, stdin);
-		if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exit\n",cadena) == 0)
+		if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exit\n", cadena) == 0)
 			break;
-		else if(_strcmp("env\n",cadena) == 0)
+		else if (_strcmp("env\n", cadena) == 0)
 		{
 			_getenv(env);
 			continue;
 		}
 		else if (cadena[0] == '\n')
-		{	
+		{
 			free(cadena), cadena = NULL;
 			continue;
 		}
@@ -35,9 +35,9 @@ int main(int __attribute__((unused)) argc, char  __attribute__((unused)) *argv[]
 		else
 		{
 			path = find_PATH(env);
-			array_paths = cargar_paths(path, array_paths),array = cargar(cadena, array);
-			path_comando = verifica(array_paths,array[0]);
-			if(cadena[0] == '/')
+			array_path = cargar_paths(path, array_path), array = cargar(cadena, array);
+			path_comando = verifica(array_path, array[0]);
+			if (cadena[0] == '/')
 			{
 				ejecutar(array, cadena, env, cadena);
 				continue;
@@ -49,9 +49,10 @@ int main(int __attribute__((unused)) argc, char  __attribute__((unused)) *argv[]
 			}
 			else
 				ejecutar(array, path_comando, env, cadena);
-			bytes_leidos = 0,cadena = NULL;
+			bytes_leidos = 0, cadena = NULL;
 		}
 	}
-	free(array_paths),free(cadena),free(array);
+	free(array_path), free(cadena), free(array);
+	(void *)argv;
 	return (0);
 }

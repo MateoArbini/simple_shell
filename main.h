@@ -23,6 +23,6 @@ int verifica_caracteres(char *cadena);
 void _getenv(char **env);
 int verifica_env(char *cadena);
 void controlar_ctrlc(int sig);
-void ejecutar(char **array, char *path_comando, char **env,char *cadena);
-void modo_no_interactivo();
+void ejecutar(char **array, char *path_comando, char **env, char *cadena);
+void modo_no_interactivo(void);
 #endif

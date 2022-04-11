@@ -2,6 +2,7 @@
 /**
  *ContTokens - Function that prints the amount of Tokens
  *@cadena1: Parameter given by the user
+ *@separador: separador
  *Return: Cont
  **/
 
@@ -32,7 +33,7 @@ char *find_PATH(char **env)
 	while (env[iter])
 	{
 		copy = _strdup(env[iter]);
-		if(env[iter][0] == 'P' && env[iter][1] == 'A')
+		if (env[iter][0] == 'P' && env[iter][1] == 'A')
 		{
 			retorno = strtok(copy, "=");
 			retorno = strtok(NULL, "=");
@@ -77,7 +78,12 @@ char **cargar(char *cadena, char **array)
 	iter = 0;
 	return (array);
 }
-
+/**
+ *cargar_paths - function
+ *@path: path
+ *@array: array
+ *Return: Array
+ **/
 char **cargar_paths(char *path, char **array)
 {
 	int iter = 0;
@@ -104,10 +110,17 @@ char **cargar_paths(char *path, char **array)
 	free(path2);
 	return (array);
 }
-
+/**
+ *ejecutar - ejecutar function
+ *@array: array
+ *@path_comando: path_comando
+ *@env: env
+ *@cadena: cadena
+ **/
 void ejecutar(char **array, char *path_comando, char **env, char *cadena)
 {
 	pid_t hijo;
+
 	array[0] = path_comando;
 	hijo = fork();
 	if (hijo == 0) /*Dentro del hijo*/
@@ -118,7 +131,7 @@ void ejecutar(char **array, char *path_comando, char **env, char *cadena)
 			perror(" ERROR");
 		}
 	}
-	else /*Estoy en el padre*/
-		wait(NULL);	
+	else/*Estoy en el padre*/
+		wait(NULL);
 }
 
