@@ -41,12 +41,6 @@ int main(void)
 				perror(array[0]);
 				continue;	}
 			else
-			{
-				ejecutar(array, path_comando, env, cadena); 
-				free(path);
-			}
-		}
-	}
+				ejecutar(array, path_comando, env, cadena); }}
 	free(array_path), free(cadena), free(array);
-	return (0);
-}
+	return (0); }
