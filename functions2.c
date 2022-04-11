@@ -72,29 +72,3 @@ void modo_no_interactivo(void)
 	if (isatty(STDIN_FILENO) == 1)
 		write(1, "$ ", 2);
 }
-/**
-*casos_border - printea
-*@cadena: texto ingresado
-*@env: env
-*@bytes_leidos: int
-*@numero_bytes: int
-*Return: 1 o 0
-**/
-int cosos_border(char *cadena, char **env, ssize_t bytes_leidos, size_t numero_bytes)
-{
-        if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exiit\n",cadena) == 0)
-			return (1);
-	else if(_strcmp("env\n",cadena) == 0)
-	{
-		_getenv(env);
-		return (0);
-	}
-	else if (cadena[0] == '\n')
-	{	
-		free(cadena), cadena = NULL;
-		return (0);
-	}
-	else (verifica_caracteres(cadena) == -1)
-		return (0);
-
-}

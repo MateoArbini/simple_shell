@@ -80,3 +80,29 @@ char *_strdup(char *str)
 		array[j] = str[j];
 	return (array);
 }
+/**
+*casos_border - printea
+*@cadena: texto ingresado
+*@env: env
+*@bytes_leidos: int
+*Return: 1 o 0
+**/
+int casos_border(char *cadena, char **env, ssize_t bytes_leidos)
+{
+int caso = verifica_caracteres(cadena);
+	if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exit\n", cadena) == 0)
+		return (1);
+	else if (_strcmp("env\n", cadena) == 0)
+	{
+		_getenv(env);
+		return (2);
+	}
+	else if (cadena[0] == '\n')
+	{
+		return (2);
+	}
+	else if (caso == -1)
+		return (2);
+	else
+		return (0);
+}
