@@ -63,6 +63,7 @@ char **cargar(char *cadena, char **array)
 
 	copycadena = _strdup(cadena);
 	cadena = strtok(cadena, "\n");
+	cadena = strtok(cadena, "\t");
 	tokens = ContTokens(copycadena, " ");
 	array = calloc(tokens + 1, sizeof(char *));
 	token = strtok(cadena, " ");
@@ -71,7 +72,7 @@ char **cargar(char *cadena, char **array)
 	{
 		array[iter] = token;
 		iter++;
-		token = strtok(NULL, "\t ");
+		token = strtok(NULL, " ");
 	}
 	free(copycadena);
 	array[tokens] = NULL;

@@ -12,37 +12,35 @@ int main(void)
 	char **array = NULL, *cadena = NULL, **env = NULL;
 
 	env = environ;
-	path = find_PATH(env);
 	while (1)
 	{	signal(SIGINT, controlar_ctrlc);
 		modo_no_interactivo();
 		bytes_leidos = getline(&cadena, &numero_bytes, stdin);
-		caso = casos_border(cadena, bytes_leidos);
+		if (bytes_leidos == -1)
+			break; 
+		caso = casos_border(cadena);
 		if (caso == 1)
 			break;
 		else if (caso == 2)
 			continue;
 		else
 		{
+			path = find_PATH(env);
 			array_path = cargar_paths(path, array_path), array = cargar(cadena, array);
 			if (cadena[0] == '/')
 			{
 				if (stat(cadena, &buf) == 0)
 				{
 					ejecutar(array, cadena, env, cadena);
-					continue;
-				}
+					continue; }
 				perror("ERROR");
-				continue;
-			}
+				continue; }
 			path_comando = verifica(array_path, array[0]);
 			if (path_comando == NULL)
 			{
-			perror("ERROR");
-			continue;	}
+				perror("ERROR");
+				continue;	}
 			else
-				ejecutar(array, path_comando, env, cadena); }
-			bytes_leidos = 0, cadena = NULL; }
+				ejecutar(array, path_comando, env, cadena); }}
 	free(array_path), free(cadena), free(array);
-	return (0);
-}
+	return (0); }

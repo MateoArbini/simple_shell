@@ -83,15 +83,18 @@ char *_strdup(char *str)
 /**
 *casos_border - printea
 *@cadena: texto ingresado
-*@bytes_leidos: int
 *Return: 1 o 0
 **/
-int casos_border(char *cadena, ssize_t bytes_leidos)
+int casos_border(char *cadena)
 {
-	int caso = verifica_caracteres(cadena);
+	int caso = 0;
 
-	if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exit\n", cadena) == 0)
+	caso = verifica_caracteres(cadena);
+
+	if (cadena[0] == EOF || _strcmp("exit\n", cadena) == 0)
+	{
 		return (1);
+	}
 	else if (_strcmp("env\n", cadena) == 0)
 	{
 		_getenv();
@@ -102,7 +105,9 @@ int casos_border(char *cadena, ssize_t bytes_leidos)
 		return (2);
 	}
 	else if (caso == -1)
+	{
 		return (2);
+	}
 	else
 		return (0);
 }
