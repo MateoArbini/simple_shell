@@ -8,6 +8,7 @@
 #include <string.h>
 #include <signal.h>
 #include <sys/wait.h>
+extern char **environ;
 
 int ContTokens(char *cadena1, char *separador);
 char *find_PATH(char **env);
@@ -20,10 +21,10 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 int verifica_exit(char *cadena);
 int verifica_caracteres(char *cadena);
-void _getenv(char **env);
+void _getenv(void);
 int verifica_env(char *cadena);
 void controlar_ctrlc(int sig);
 void ejecutar(char **array, char *path_comando, char **env, char *cadena);
 void modo_no_interactivo(void);
-int casos_border(char *cadena, char **env, ssize_t bytes_leidos);
+int casos_border(char *cadena, ssize_t bytes_leidos);
 #endif

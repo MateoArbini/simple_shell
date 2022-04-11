@@ -43,15 +43,15 @@ int verifica_caracteres(char *cadena)
 }
 /**
  *_getenv - getenv function
- *@env: env
  **/
-void _getenv(char **env)
+void _getenv(void)
 {
 	int iter = 0;
 
-	while (env[iter])
+	while (environ[iter])
 	{
-		write(1, env[iter], 2);
+		write(1, environ[iter], _strlen(environ[iter]));
+		write(1, "\n", 1);
 		iter++;
 	}
 }

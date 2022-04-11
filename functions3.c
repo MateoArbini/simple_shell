@@ -87,14 +87,15 @@ char *_strdup(char *str)
 *@bytes_leidos: int
 *Return: 1 o 0
 **/
-int casos_border(char *cadena, char **env, ssize_t bytes_leidos)
+int casos_border(char *cadena, ssize_t bytes_leidos)
 {
-int caso = verifica_caracteres(cadena);
+	int caso = verifica_caracteres(cadena);
+
 	if (bytes_leidos == -1 || cadena[0] == EOF || _strcmp("exit\n", cadena) == 0)
 		return (1);
 	else if (_strcmp("env\n", cadena) == 0)
 	{
-		_getenv(env);
+		_getenv();
 		return (2);
 	}
 	else if (cadena[0] == '\n')
