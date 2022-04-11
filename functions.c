@@ -32,7 +32,7 @@ char *find_PATH(char **env)
 
 	while (env[iter])
 	{
-		copy = _strdup(env[iter]);
+		copy = _strdup((env[iter]));
 		if (env[iter][0] == 'P' && env[iter][1] == 'A')
 		{
 			retorno = strtok(copy, "=");
@@ -40,11 +40,7 @@ char *find_PATH(char **env)
 			break;
 		}
 		else
-		{
 			iter++;
-		}
-		free(copy);
-		copy = NULL;
 	}
 	return (retorno);
 }
@@ -75,7 +71,7 @@ char **cargar(char *cadena, char **array)
 		token = strtok(NULL, " ");
 	}
 	free(copycadena);
-	array[tokens] = NULL;
+	free(token);
 	iter = 0;
 	return (array);
 }
@@ -89,11 +85,12 @@ char **cargar_paths(char *path, char **array)
 {
 	int iter = 0;
 	char *copypath = NULL;
-	char *path2 = _strdup(path);
+	char *path2 = NULL;
 	int tokens = 0;
 	char *token = NULL;
 	char *copytoken = NULL;
 
+	path2 = _strdup(path);
 	copypath = _strdup(path);
 	tokens = ContTokens(copypath, ":");
 	array = calloc(tokens + 1, sizeof(char *));
