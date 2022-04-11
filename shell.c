@@ -17,7 +17,7 @@ int main(void)
 		modo_no_interactivo();
 		bytes_leidos = getline(&cadena, &numero_bytes, stdin);
 		if (bytes_leidos == -1)
-			break; 
+			break;
 		caso = casos_border(cadena);
 		if (caso == 1)
 			break;
