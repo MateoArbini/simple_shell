@@ -96,4 +96,5 @@ int cosos_border(char *cadena, char **env, ssize_t bytes_leidos, size_t numero_b
 	}
 	else (verifica_caracteres(cadena) == -1)
 		return (0);
+
 }
