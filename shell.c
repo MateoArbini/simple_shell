@@ -53,6 +53,5 @@ int main(int argc, char *argv[], char **env)
 		}
 	}
 	free(array_path), free(cadena), free(array);
-	(void *)argv;
 	return (0);
 }
