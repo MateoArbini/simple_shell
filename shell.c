@@ -6,7 +6,8 @@
 *@argc: atributo
 *Return: 1
 **/
-int main(int argc, char *argv[], char **env)
+int main(int __attribute__((unused)) argc, char __attribute__((unused))*argv[],
+	char **env)
 {
 	char *path = NULL, *path_comando = NULL, **array_path = NULL;
 	ssize_t bytes_leidos = 0;
@@ -53,6 +54,5 @@ int main(int argc, char *argv[], char **env)
 		}
 	}
 	free(array_path), free(cadena), free(array);
-	(void *)argv;
 	return (0);
 }
