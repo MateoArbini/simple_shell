@@ -9,9 +9,8 @@ int main(void)
 	ssize_t bytes_leidos = 0;
 	int caso = 0;
 	size_t numero_bytes = 0;
-	char **array = NULL, *cadena = NULL, **env = NULL;
+	char **array = NULL, *cadena = NULL;
 
-	env = environ;
 	while (1)
 	{	signal(SIGINT, controlar_ctrlc);
 		modo_no_interactivo();
@@ -25,13 +24,13 @@ int main(void)
 			continue;
 		else
 		{
-			path = find_PATH(env);
+			path = find_PATH(environ);
 			array_path = cargar_paths(path, array_path), array = cargar(cadena, array);
 			if (cadena[0] == '/')
 			{
 				if (stat(cadena, &buf) == 0)
 				{
-					ejecutar(array, cadena, env, cadena);
+					ejecutar(array, cadena, environ, cadena);
 					continue; }
 				perror(cadena);
 				continue; }
@@ -41,8 +40,8 @@ int main(void)
 				perror("./hsh");
 				continue;	}
 			else
-				ejecutar(array, path_comando, env, cadena);
-		free(path); freearray(array_path); }
-	}
+				ejecutar(array, path_comando, environ, cadena);
+			free(path);
+			freearray(array_path); } }
 	free(array_path), free(cadena), free(array);
-	return (0); }
+return (0); }

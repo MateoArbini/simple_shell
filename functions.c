@@ -55,7 +55,7 @@ char **cargar(char *cadena, char **array)
 	int tokens = 0;
 	char *token = NULL;
 
-	copycadena = calloc(_strlen(cadena),sizeof(char));
+	copycadena = calloc(_strlen(cadena), sizeof(char));
 	copycadena = strcpy(copycadena, cadena);
 	cadena = strtok(cadena, "\n");
 	cadena = strtok(cadena, "\t");
