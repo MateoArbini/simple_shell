@@ -41,6 +41,8 @@ int main(void)
 				perror("./hsh");
 				continue;	}
 			else
-				ejecutar(array, path_comando, env, cadena); }}
+				ejecutar(array, path_comando, env, cadena);
+		free(path); freearray(array_path); }
+	}
 	free(array_path), free(cadena), free(array);
 	return (0); }

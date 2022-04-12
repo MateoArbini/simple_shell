@@ -27,22 +27,20 @@ int ContTokens(char *cadena1, char *separador)
 char *find_PATH(char **env)
 {
 	char *copy = NULL;
-	char *retorno = NULL;
 	int iter = 0;
 
 	while (env[iter])
 	{
-		copy = _strdup((env[iter]));
 		if (env[iter][0] == 'P' && env[iter][1] == 'A')
 		{
-			retorno = strtok(copy, "=");
-			retorno = strtok(NULL, "=");
+			copy = calloc((_strlen(env[iter]) - 5), sizeof(char));
+			copy = _strcpy(copy, env[iter] + 5);
 			break;
 		}
 		else
 			iter++;
 	}
-	return (retorno);
+	return (copy);
 }
 /**
  *cargar - Function that returns the array to execute
@@ -57,13 +55,13 @@ char **cargar(char *cadena, char **array)
 	int tokens = 0;
 	char *token = NULL;
 
-	copycadena = _strdup(cadena);
+	copycadena = calloc(_strlen(cadena),sizeof(char));
+	copycadena = strcpy(copycadena, cadena);
 	cadena = strtok(cadena, "\n");
 	cadena = strtok(cadena, "\t");
 	tokens = ContTokens(copycadena, " ");
 	array = calloc(tokens + 1, sizeof(char *));
 	token = strtok(cadena, " ");
-
 	while (token != NULL && iter < tokens) /*Lleno el array*/
 	{
 		array[iter] = token;
@@ -84,29 +82,25 @@ char **cargar(char *cadena, char **array)
 char **cargar_paths(char *path, char **array)
 {
 	int iter = 0;
-	char *copypath = NULL;
 	char *path2 = NULL;
 	int tokens = 0;
 	char *token = NULL;
-	char *copytoken = NULL;
+	char *copy = NULL;
 
-	path2 = _strdup(path);
-	copypath = _strdup(path);
-	tokens = ContTokens(copypath, ":");
+	path2 = calloc(_strlen(path), sizeof(char));
+	path2 = _strcpy(path2, path);
+	tokens = ContTokens(path2, ":");
 	array = calloc(tokens + 1, sizeof(char *));
-	token = strtok(path2, ":");
-	while (token != NULL && iter < tokens) /*Lleno el array*/
+	token = strtok(path, ":");
+	while (iter < tokens)
 	{
-		copytoken = _strdup(token);
-		token = _strcat(copytoken, "/");
-		array[iter] = token;
-		iter++;
+		copy = calloc(_strlen(token), sizeof(char));
+		copy = _strcpy(copy, token);
+		token = _strcat(copy, "/");
+		array[iter] = copy;
 		token = strtok(NULL, ":");
-		copytoken = NULL;
+		iter++;
 	}
-	free(copytoken);
-	free(copypath);
-	array[tokens] = NULL;
 	free(path2);
 	return (array);
 }

@@ -9,7 +9,8 @@
 #include <signal.h>
 #include <sys/wait.h>
 extern char **environ;
-
+void freearray(char **array);
+char *_strcpy(char *dest, char *src);
 int ContTokens(char *cadena1, char *separador);
 char *find_PATH(char **env);
 char **cargar(char *cadena, char **array);
