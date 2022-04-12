@@ -72,7 +72,7 @@ Our code should use the **Betty** style, and it will be checked using:
 
 # Flowchart
 
-INSERTAR AQUI EL FLOWCHART
+<img src=https://user-images.githubusercontent.com/98335785/162879103-5e58a581-8519-404b-bd19-ed3752cffc8c.png>
 
 # Authors
 [Mateo Arbini](https://www.linkedin.com/in/mateo-arbini-1493691a8/)
