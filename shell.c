@@ -38,7 +38,7 @@ int main(void)
 			path_comando = verifica(array_path, array[0]);
 			if (path_comando == NULL)
 			{
-				perror(array[0]);
+				perror("./hsh");
 				continue;	}
 			else
 				ejecutar(array, path_comando, env, cadena); }}

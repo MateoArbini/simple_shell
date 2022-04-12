@@ -102,7 +102,9 @@ char **cargar_paths(char *path, char **array)
 		array[iter] = token;
 		iter++;
 		token = strtok(NULL, ":");
+		copytoken = NULL;
 	}
+	free(copytoken);
 	free(copypath);
 	array[tokens] = NULL;
 	free(path2);
