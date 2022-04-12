@@ -9,7 +9,27 @@ Hello everyone! This is our “simple_shell” project. Our task was to create a
 
 # Functions
 
-INSERTAR AQUI LOS PROTOTIPOS DE LOS COMANDOS
+`````
+extern char **environ;
+char *_strcpy(char *dest, char *src);
+int ContTokens(char *cadena1, char *separador);
+char *find_PATH(char **env);
+char **cargar(char *cadena, char **array);
+char **cargar_paths(char *path, char **array);
+char *verifica(char **path, char *comando);
+int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+int verifica_exit(char *cadena);
+int verifica_caracteres(char *cadena);
+void _getenv(void);
+int verifica_env(char *cadena);
+void controlar_ctrlc(int sig);
+void ejecutar(char **array, char *path_comando, char **env, char *cadena);
+void modo_no_interactivo(void);
+int casos_border(char *cadena);
+`````
 
 # Compilation
 The command we used to compile our console shell was:
